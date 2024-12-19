@@ -1,0 +1,142 @@
+﻿@model Excel_Data.Models.exlist
+
+@{
+    ViewData["Title"] = "Upload_Excel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .container-fluid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 2% 0%;
+    }
+
+    .upload-container {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .upload-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .upload-header h2 {
+            font-size: 30px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .upload-header p {
+            font-size: 14px;
+            color: #777;
+        }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #4e73df;
+        border-color: #4e73df;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #365ac7;
+            border-color: #365ac7;
+        }
+
+    .text-center {
+        font-size: 14px;
+        color: #777;
+    }
+
+        .text-center a {
+            color: #4e73df;
+            text-decoration: none;
+        }
+
+            .text-center a:hover {
+                text-decoration: underline;
+            }
+
+    .file-upload {
+        font-size: 14px;
+        color: #007bff;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .file-upload input[type="file"] {
+            display: block;
+            width: 100%;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+</style>
+
+<div class="container-fluid">
+
+    <div class="upload-container">
+        <div class="upload-header">
+            <h2>Upload File or Folder</h2>
+            <p>Select a file or folder to upload</p>
+        </div>
+
+        <form id="uploadForm" method="post" asp-action="Upload" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="fileUpload">Choose File or Folder</label>
+                <input type="file" class="form-control" id="fileUpload" name="file" required>
+            </div>
+            <div class="text-center">
+                <p>Only .xls, .xlsx, or .csv files are allowed</p>
+            </div>
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+
+@*         <div class="file-upload">
+            <p>Need help? <a href="#">Learn more about file types and folder upload</a></p>
+        </div> *@
+
+        <div class="text-center mt-3">
+            <p>Want to view uploaded files? <a href="~/home/upload_history">Go to Upload History</a></p>
+        </div>
+    </div>
+
+</div>
+<script>
+    document.getElementById("uploadForm").addEventListener("submit", function (e) {
+        const allowedExtensions = [".xls", ".xlsx", ".csv"];
+        const fileInput = document.getElementById("fileInput");
+        const fileName = fileInput.value;
+
+        if (!fileName) {
+            alert("Please select a file to upload.");
+            e.preventDefault();
+            return;
+        }
+
+        const fileExtension = fileName.substring(fileName.lastIndexOf(".")).toLowerCase();
+        if (!allowedExtensions.includes(fileExtension)) {
+            alert("Invalid file type. Please upload a .xls, .xlsx, or .csv file.");
+            e.preventDefault();
+        }
+    });
+</script>

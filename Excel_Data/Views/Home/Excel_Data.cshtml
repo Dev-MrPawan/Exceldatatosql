@@ -1,0 +1,127 @@
+﻿
+
+
+@{
+	ViewData["Title"] = "Excel_Data";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model Excel_Data.Models.exlist
+
+
+<style>
+    .container-fluid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 2% 0%;
+    }
+
+    .table-container {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+        .table-container h2 {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+    .table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .table td {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .btn-primary {
+        background-color: #4e73df;
+        border-color: #4e73df;
+        font-size: 14px;
+        padding: 8px;
+        border-radius: 8px;
+        margin-top: 20px;
+    }
+
+        .btn-primary:hover {
+            background-color: #365ac7;
+            border-color: #365ac7;
+        }
+
+    .text-center {
+        font-size: 14px;
+        color: #777;
+    }
+
+        .text-center a {
+            color: #4e73df;
+            text-decoration: none;
+        }
+
+            .text-center a:hover {
+                text-decoration: underline;
+            }
+
+    .upload-history-link {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+
+<div class="container-fluid">
+
+    <div class="table-container table-responsive">
+        <h2>Excel Data</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Index ID</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Email</th>
+                    <th>Tdate</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @{
+                    int i = 0;
+                }
+                @foreach (var item in Model.list)
+                {
+                    i++;
+                    <tr>
+                      
+                        <td>@item.indexid</td>
+                        <td>@item.name</td>
+                        <td>@item.age</td>
+                        <td>@item.email</td>
+                        <td>@item.tdate</td>
+                      
+
+
+                    </tr>
+                }
+                <!-- Sample data row -->
+               
+                <!-- More rows can go here -->
+            </tbody>
+        </table>
+
+        <div class="upload-history-link">
+            <p>Want to upload a new file? <a href="~/home/upload_excel">Go to File Upload</a></p>
+        </div>
+    </div>
+
+</div>

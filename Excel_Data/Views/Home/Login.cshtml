@@ -1,0 +1,118 @@
+﻿@{
+	ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_loginLayout.cshtml";
+}
+<style>
+
+    .container-fluid{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        margin: 2% 0%;
+    }
+    .login-container {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .login-header {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+        .login-header h2 {
+            font-size: 30px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .login-header p {
+            font-size: 14px;
+            color: #777;
+        }
+
+    .form-group label {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-control {
+        border-radius: 8px;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        background-color: #4e73df;
+        border-color: #4e73df;
+        font-size: 16px;
+        padding: 10px;
+        border-radius: 8px;
+        width: 100%;
+    }
+
+        .btn-primary:hover {
+            background-color: #365ac7;
+            border-color: #365ac7;
+        }
+
+    .text-center {
+        font-size: 14px;
+        color: #777;
+    }
+
+        .text-center a {
+            color: #4e73df;
+            text-decoration: none;
+        }
+
+            .text-center a:hover {
+                text-decoration: underline;
+            }
+
+    .forgot-password {
+        font-size: 14px;
+        color: #007bff;
+        text-align: right;
+    }
+
+        .forgot-password a {
+            text-decoration: none;
+        }
+
+            .forgot-password a:hover {
+                text-decoration: underline;
+            }
+</style>
+<div class="container-fluid" >
+    <div class="login-container">
+        <div class="login-header">
+            <h2>Login to Your Account</h2>
+            <p>Please enter your username and password</p>
+        </div>
+
+        <form asp-action="Login" asp-controller="Home" method="POST">
+            <div class="form-group">
+                <label for="username">Email</label>
+                <input type="text" class="form-control" id="username" name="email" placeholder="Enter your username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+@*             <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div> *@
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+
+@*         <div class="text-center mt-3">
+            <p>Don't have an account? <a href="#">Sign up here</a></p>
+        </div> *@
+    </div>
+</div>
